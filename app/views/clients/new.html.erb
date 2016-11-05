@@ -1,0 +1,28 @@
+<h2>Enter the information of the client</h2>
+
+
+<%= form_for @client do |f| %>
+	<% if @client.errors.any? %>
+		<div class = "errors" style = "color: red;">
+			<h3>These errors prohibitted the form from being saved: </h3>
+			<ul>
+				<% @client.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+
+	<%= f.label :name %><br/>
+	<%= f.text_field :name %><br/>
+	<%= f.label :email %><br/>
+	<%= f.text_field :email %><br/>
+	<%= f.label :mobile %><br/>
+	<%= f.text_field :mobile %><br/>
+	<%= f.label :company %><br/>
+	<%= f.text_field :company %><br/>
+	<%= f.label :website %><br/>
+	<%= f.url_field :website %><br/>
+	<br/>
+	<%= f.submit %>
+<% end %>

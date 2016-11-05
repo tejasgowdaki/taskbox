@@ -1,0 +1,19 @@
+<h2>Hello World</h2>
+<p>2 + 2 = <%=2 + 2 %></p>
+
+<% name = "Suresh" %>
+<p>Welcome to the site <%= name %></p>
+<% movies = ["The Fury", "Departed", "Sully", "The Shooter"] %>
+<h3>Listing movies</h3>
+<ol>
+	<% movies.each do |movie| %>
+		<li><%= movie %></li>
+	<% end %>
+</ol>
+
+<a href="http://www.google.com" target="_blank">Visit Google</a><br>
+
+<%= link_to "Goodbye World", "/say/goodbye", target: "_blank" %><br>
+
+<%= link_to "Visit Goodbye World", say_goodbye_path %>
+

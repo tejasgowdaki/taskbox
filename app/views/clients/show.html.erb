@@ -1,0 +1,11 @@
+<h2>Client name : <%= @client.name %></h2>
+<h3>Tasks list</h3>
+<ul>
+<% @client.client_tasks.each do |task| %>
+	<li><%= task.title %></li>
+<% end %>
+</ul>
+<br/><br/>
+
+<%= link_to "Back", clients_path %> 
+

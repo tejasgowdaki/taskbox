@@ -1,0 +1,112 @@
+<h2>1. List of products based on a given category "<%= @category %>"</h2>
+<ol>
+	<% @products_category.each do |product| %>
+		<li><%= product.name %></li>
+	<% end %>
+</ol>
+
+<h2>2. List of products based on price range <%= @price_range_min %> - <%= @price_range_max %></h2>
+<ol>
+	<% @products_price_range.each do |product| %>
+		<li><%= product.name %> - Rs <%= product.price %></li>
+	<% end %>
+</ol>
+
+<h2>3. List of products based on a given brand "<%= @brand %>"</h2>
+<ol>
+	<% @products_brand.each do |product| %>
+		<li><%= product.name %></li>
+	<% end %>
+</ol>
+
+<h2>4. List of products based on size of a certain brand falling within a given price range</h2><br>
+<h3>Size - <%= @size %>, Brand - <%= @brand %>, Price range - <%= @price_range_min %>-<%= @price_range_max %></h3> 
+<ol>
+	<% @products_size.each do |product| %>
+		<li><%= product.name %> - <%= product.brand %> - <%= product.size %> - <%= product.price %></li>
+	<% end %>
+</ol>
+
+<h2>5. List of products that are available </h2>
+<ol>
+	<% @products_available.each do |product| %>
+		<li><%= product.name %></li>
+	<% end %>
+</ol>
+
+<h2>6. List of products following under price <%= @price %> </h2>
+<ol>
+	<% @products_price.each do |product| %>
+		<li><%= product.name %></li>
+	<% end %>
+</ol>
+
+<h2>7. List of products upto price <%= @price %> </h2>
+<ol>
+	<% @products_price_upto.each do |product| %>
+		<li><%= product.name %></li>
+	<% end %>
+</ol>
+
+<h2>8. List of products based on the categories </h2>
+<ol>
+	<% @category_product_hash.each do |category, names| %>
+		<li><%= category %></li>
+			<ol>
+				<% names.each do |name| %>
+					<li><%= name %></li>
+				<% end %>
+			</ol>
+	<% end %>
+</ol>
+
+<h2>9. List of products that are available </h2>
+<ol>
+	<% @products_available.each do |product| %>
+		<li><%= product.name %></li>
+	<% end %>
+</ol>
+
+<h2>10. List of products price decending and name ascending</h2><br>
+<h3>Price High-Low</h3>
+<ol>
+	<% @price_name_order.each do |product| %>
+		<li><%= product.name %> - Rs <%= product.price %></li>
+	<% end %>
+</ol>
+
+<h2>11. List products according to their price group</h2>
+<ol>
+	<% @price_group_hash.each do |price, names| %>
+		<li>Price group Rs <%= price %></li>
+		<ol>
+			<% names.each do |name| %>
+				<li><%= name %></li>
+			<% end %>
+		</ol>
+	<% end %>
+</ol>
+
+
+<h2>12. The total worth of the products is <%= @total_worth %> </h2>
+
+<h2>13. List of products based on the categories and their Total worth</h2>
+<ol>
+	<% @category_price_hash.each do |category, value| %>
+	<li><%= category %>	<br>Total worth is Rs <%= value %></li>
+	<% end %>
+</ol>
+
+<h2>15. List of products according to categories and their total worth</h2>
+<ol>
+	<% @category_hash.each do |category, value_hash| %>
+		<li><%= category %></li>
+		<ol>
+		<% value_hash["names"].each do |name| %>
+			<li><%= name %></li>
+		<% end %>
+		</ol>
+		<b>Total worth is Rs <%= value_hash["total_worth"] %></b>
+	<% end %>
+</ol>
+

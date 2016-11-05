@@ -1,0 +1,7 @@
+<p2>List of clients</p2><br>
+<p2>Total clients are <%= @clients.size %></p2>
+<ol>
+	<% @clients.each do |client| %>
+	<li><%= client.name %></li>
+	<% end %>
+</ol> 

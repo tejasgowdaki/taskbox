@@ -1,0 +1,24 @@
+<!-- Multiple comment line -->
+<h2>Listing Products</h2>
+<% products = {"pen" => 25, "scale" => 10, "pencil" => 15, "marker" => 25 } %>
+<table border="1">
+	<thead>
+		<tr>
+			<th>NAME	</th>
+			<th>PRICE</th>
+		</tr>
+	</thead>
+	<% sum = 0 %>
+	<tbody>
+		<% products.each do |product, price| %>
+		<tr>
+			<td><%= product.capitalize %></td>
+			<td><%= price %></td>
+		</tr>
+		<% sum += price %>
+		<% end %>
+	</tbody>
+</table>
+<b>Total = <%= sum %></b><br>
+
+<b>Total(inject) = <%= products.values.inject(:+) %></b>	

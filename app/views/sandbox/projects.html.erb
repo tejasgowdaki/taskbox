@@ -1,0 +1,7 @@
+<p2>Projects list</p2><br>
+<p2>Total projects <%= @projects.size %></p2>
+<ol>
+	<% @projects.each do |project| %>
+	<li><%= project.name %> - <%= project.start_date %></li>
+	<% end %>
+</ol>	
