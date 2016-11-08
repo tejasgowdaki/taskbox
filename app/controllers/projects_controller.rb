@@ -21,15 +21,20 @@ class ProjectsController < ApplicationController
 	end
 
 	def show
-		@project = current_user.projects.find(params[:id])
+		begin
+			@project = current_user.projects.find(params[:id])
+		rescue ActiveRecord::RecordNotFound
+			redirect_to projects_path, notice: "Record not found"
+		end
 		@task = Task.new
+
 	end
 
 	def edit 
 		begin
 			@project = current_user.projects.find(params[:id])
 		rescue ActiveRecord::RecordNotFound 
-			redirect_to projects_path, notice: "Record not found"
+			redirect_to projects_path, notice: "Record not found !!"
 		end
 	end
 

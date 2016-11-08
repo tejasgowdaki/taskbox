@@ -17,19 +17,24 @@
 <b>Over due</b>
 <ol>
 	<% @project.over_due_tasks.each do |task| %>
-		<li><%= task.title %></li>
+		<li><%= task.title %><%= link_to "Mark as complete", tasks_mark_as_complete_path(task_id: task.id) %></li>
 	<% end %>
 </ol> 
 <b>Incompleted</b>
 <ol>
 	<% @project.incompleted_tasks.each do |task| %>
-		<li><%= task.title %></li>
+		<li><%= task.title %><%= link_to "Mark as complete", tasks_mark_as_complete_path(task_id: task.id) %></li>
 	<% end %>
 </ol>
 <b>Completed</b>
 <ol>
 	<% @project.completed_tasks.each do |task| %>
-		<li><%= task.title %></li>
+		<li><%= task.title %><%= link_to "Mark as incomplete", tasks_mark_as_incomplete_path(task_id: task.id) %>
+		<%= form_for task do |f| %>
+			<%= f.hidden_field :is_completed, value: false %>
+			<%= f.submit "Mark as incomplete" %> 
+		<% end %>
+		</li>
 	<% end %>
 </ol>  
 <br/><br/>
@@ -43,7 +48,7 @@
 	<%= f.label :is_completed %>? <br/>
 	<%= f.check_box :is_completed %><br/>
 
-	<%= f.hidden_field :project_id, value: @project.id %><br/>
+	<%= f.hidden_field :project_id, value: @project.id %>
 
 	<%= f.submit %>
 
@@ -55,7 +60,7 @@
 <% @project.tasks.each do |task| %>
 	<% data.push([task.title, @project.start_date.to_s , task.due_date.to_s]) %>
 <% end %>
-
+<br/><br/>
 <%= timeline data %>
 
 

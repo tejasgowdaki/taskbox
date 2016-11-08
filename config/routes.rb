@@ -2,6 +2,9 @@ Rails.application.routes.draw do
 
   devise_for :users
   
+  get 'tasks/mark_as_complete'
+  get 'tasks/mark_as_incomplete'
+
   get 'sandbox/clients'
 
   get 'sandbox/projects'
