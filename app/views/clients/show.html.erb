@@ -1,4 +1,5 @@
 <h2>Client name : <%= @client.name %></h2>
+<%= link_to "Export to excel", clients_export_client_details_path(format: "xls",client_id: @client.id) %>
 <h3>Tasks list</h3>
 <ul>
 <% @client.client_tasks.each do |task| %>

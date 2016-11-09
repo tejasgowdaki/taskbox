@@ -1,0 +1,27 @@
+<h2>Listing clients</h2>
+
+<table border="1">
+	<thead>
+		<tr>
+			<th>SL No</th>
+			<th>Name</th>
+			<th>Email</th>
+			<th>Company</th>
+			<th>Mobile</th>
+			<th>Totl projects</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @clients.each_with_index do |client, index| %>
+		<tr>
+			<td><%= index + 1 %></td>
+			<td><%= client.name %></td>
+			<td><%= client.email %></td>
+			<td><%= client.company %></td>
+			<td><%= client.mobile %></td>
+			<td><%= client.projects.size %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
