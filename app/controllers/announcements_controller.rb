@@ -12,7 +12,7 @@ class AnnouncementsController < ApplicationController
 		@announcement = Announcement.new(announcement_param)
 		if @announcement.save
 			Notification.new_announcement(@announcement).deliver
-			redirect_to announcments_path
+			redirect_to announcements_path
 		else
 			render action: "new"
 		end
