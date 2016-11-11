@@ -15,4 +15,10 @@ class Notification < ApplicationMailer
   	mail to: "#{task.project.client.email}", subject: "#{task.title} has been reopened"
   end
 
+  def new_announcement(announcement)
+    @announcement = announcement
+    emails = @announcement.user.clients.pluck(:email).join(",")
+    mail to: "#{emails}", subject: "#{@announcement.title}"
+  end
+
 end
