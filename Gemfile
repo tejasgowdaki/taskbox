@@ -7,6 +7,7 @@ gem 'faker'
 #faker pry
 gem 'pry'
 gem 'rabl' #ruby api builder language, jbuilder, active model serilizers
+gem 'httparty'
 
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

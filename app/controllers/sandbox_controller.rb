@@ -7,7 +7,16 @@ class SandboxController < ApplicationController
   	@projects = Project.where('start_date > ? AND start_date < ?', Date.today.beginning_of_month-3.months,Date.today.beginning_of_month).order('start_date')
   end
 
-  def products
+  def get_jobs
+  	if params[:technology]
+  		technology = params[:technology]
+  		location = params[:location]
+  		@response = HTTParty.get("http://api.indeed.com/ads/apisearch?publisher=7277146494571922&q=#{technology}&l=#{location}&co=india&format=json&v=2")
+  	end
+  end
+
+
+
 =begin
 
     1. List all products based on a given category
@@ -26,7 +35,7 @@ class SandboxController < ApplicationController
     14. List all products based on the categories
 
 
-=end
+end
 	# 1
 	@category = "Toys"
 	@products_category = Product.where('category = ?', @category).limit(20)
@@ -85,23 +94,23 @@ class SandboxController < ApplicationController
 			@price_group_hash[product.price] = [product.name]
 		end
 	end
-=begin
+begin
 	@price_group_hash["0 - 25"] = @products.where('price >= ? AND price <= ?', 0, 25).limit(10)
 	@price_group_hash["26 - 50"] = @products.where('price >= ? AND price <= ?', 26, 50).limit(10)
 	@price_group_hash["51 - 75"] = @products.where('price >= ? AND price <= ?', 51, 75).limit(10)
 	@price_group_hash["76 - 99"] = @products.where('price >= ? AND price <= ?', 76, 99).limit(10)
-=end
+end
 
 
 	#12
 	@total_worth = Product.sum(:price)
-=begin
+begin
 	@total_worth = 0
 	@products = Product.all
 	@products.each do |product|
 		@total_worth += product.price
 	end
-=end
+end
 	#13
 	@category_price_hash = {}
 	@products = Product.all.limit(20)
@@ -131,5 +140,6 @@ class SandboxController < ApplicationController
 		end
 	end
 end
+=end
 end
 

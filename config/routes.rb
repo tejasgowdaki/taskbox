@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get 'tasks/mark_as_incomplete'
 
   get 'sandbox/clients'
+  get 'sandbox/get_jobs'
 
   get 'sandbox/projects'
 
