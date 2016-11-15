@@ -15,6 +15,10 @@ class SandboxController < ApplicationController
   	end
   end
 
+  def zomato
+
+  end
+
 
 
 =begin

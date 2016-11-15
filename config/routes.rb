@@ -17,10 +17,10 @@ Rails.application.routes.draw do
 
   get 'sandbox/clients'
   get 'sandbox/get_jobs'
-
+  get 'sandbox/zomato'
   get 'sandbox/projects'
-
   get 'sandbox/products'
+  
   get 'say/listing_products'
   get 'say/goodbye'
   get 'say/hello'
