@@ -1,6 +1,14 @@
 <h2>Project name : <%= @project.name %></h2> 
 <b>Client name : <%= link_to @project.client.try(:name).capitalize	, client_path(@project.client) %><br/><br/>
 
+
+<div class="progress" style="height: 20px;" >
+  <div class="progress-bar progress-bar-success" style="width: <%= @project.calc_completed %>%;">
+  		<%= @project.calc_completed %>%
+  </div>
+</div>
+
+
 <b>Categories : </b>
 <ul>
 	<% @project.categories.each do |category| %>
