@@ -12,6 +12,21 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+// require turbolinks
 //= require_tree .
 //= require chartkick
+
+
+$(document).ready(function(){
+	$("#projectsTable").DataTable({
+		//"ordering": false
+		//"order": [[1,'asc']]
+	});
+
+	$("#project_client_id").chosen();
+
+	$("#startDate").datepicker({
+		"dateFormat" : "yy-mm-dd"
+	});
+
+})
