@@ -15,14 +15,56 @@
 
 	<%= f.label :name %><br/>
 	<%= f.text_field :name %><br/>
+
 	<%= f.label :email %><br/>
 	<%= f.text_field :email %><br/>
+
 	<%= f.label :mobile %><br/>
-	<%= f.text_field :mobile %><br/>
+	<%= f.text_field :mobile, id: "mobile" %><br/>
+	<p id="mobileError"></p>
+
 	<%= f.label :company %><br/>
 	<%= f.text_field :company %><br/>
+
 	<%= f.label :website %><br/>
 	<%= f.url_field :website %><br/>
 	<br/>
 	<%= f.submit %>
 <% end %>
+
+
+<script>
+	var mobileHandle = document.getElementById('mobile');
+	var mobileErrorHandle = document.getElementById('mobileError');
+	var formHandle = document.getElementById('new_client');
+	var anyError = false;
+
+	formHandle.onsubmit = function (e) {
+		if (anyError) {
+			e.preventDefault();
+		}
+	}
+
+	mobileHandle.onblur = function(){
+		if (mobileHandle.value.length == 10) {
+			var request = new XMLHttpRequest();
+			request.open('GET', '/clients/validate_form.json?mobile=' + mobileHandle.value, true)
+			request.onreadystatechange = function(){
+				if ((request.readyState === 4) && (request.status === 200)) {
+					var response = JSON.parse(request.responseText);
+					if (response.can_create) {
+						mobileErrorHandle.innerHTML = "Good to go";
+						anyError = false;
+					} else {
+						mobileErrorHandle.innerHTML = "Mobile already exist";
+						anyError = true;
+					}
+				}
+			};
+			request.send();
+		} else {
+			anyError = true;
+			mobileErrorHandle.innerHTML = "Should be 10 characters";
+		}
+	};
+</script>

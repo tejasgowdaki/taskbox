@@ -5,10 +5,11 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :clients
     end
-  end  
+  end
 
   devise_for :users
-  
+
+  get 'clients/validate_form'
   get 'clients/export'
   get 'clients/export_client_details'
 
@@ -20,7 +21,7 @@ Rails.application.routes.draw do
   get 'sandbox/zomato'
   get 'sandbox/projects'
   get 'sandbox/products'
-  
+
   get 'say/listing_products'
   get 'say/goodbye'
   get 'say/hello'

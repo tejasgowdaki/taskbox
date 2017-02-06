@@ -5,7 +5,7 @@ class ClientsController < ApplicationController
 	end
 
 	def new
-		@client = Client.new 
+		@client = Client.new
 	end
 
 	def create
@@ -33,6 +33,12 @@ class ClientsController < ApplicationController
 
 	def export_client_details
 		@client = current_user.clients.find(params[:client_id])
+	end
+
+	def validate_form
+		if params[:mobile]
+			@client = Client.find_by_mobile(params[:mobile]);
+		end
 	end
 
 	private
